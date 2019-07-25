@@ -20,5 +20,7 @@ Tools also included:
 *MUST BE ROOT USER*
 
 cd kalisetup
+
 chmod +x kalisetup.sh
+
 ./kalisetup.sh

@@ -17,6 +17,7 @@ Tools also included:
 
 *MUST BE ROOT USER*
 
+USAGE:
 cd kalisetup
 
 chmod +x kalisetup.sh

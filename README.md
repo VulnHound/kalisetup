@@ -19,10 +19,10 @@ Tools also included:
 
 Installation and USAGE:
                       
-                        git clone https://github.com/VulnHound/kalisetup.git
+    git clone https://github.com/VulnHound/kalisetup.git
                         
-                        cd kalisetup
+    cd kalisetup
 
-                        chmod +x kalisetup.sh
+    chmod +x kalisetup.sh
 
-                        ./kalisetup.sh
+    ./kalisetup.sh

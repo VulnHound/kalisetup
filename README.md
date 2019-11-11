@@ -17,9 +17,12 @@ Tools also included:
 
 *MUST BE ROOT USER*
 
-USAGE:
-cd kalisetup
+Installation and USAGE:
+                      
+                        git clone https://github.com/VulnHound/kalisetup.git
+                        
+                        cd kalisetup
 
-chmod +x kalisetup.sh
+                        chmod +x kalisetup.sh
 
-./kalisetup.sh
+                        ./kalisetup.sh

@@ -4,18 +4,24 @@ VULNHOUND KALI SETUP
 I originally made this short script to assist in the automation
 of my Kali setup every time I load a new VM or have a fresh install.
 
-The script will Update, Upgrade, and Add new packages
+The script will Update, Upgrade, Add new packages, and Create Custom Aliases/Shortcuts
 
-Tools also included:
+Tools included:
 
-- BBHT
+- BBHT - and EVERY tool that comes with it
 - LazyRecon
 - Asnlookup
 - Massdns
 - RED_HAWK
 - Anon-Surf for kali
-
-*MUST BE ROOT USER*
+- assetfinder
+- meg
+- gf
+- GoBuster
+- SubFinder
+- LinkFinder
+- Amass
+- XSStrike
 
 Installation and USAGE:
                       
@@ -26,3 +32,17 @@ Installation and USAGE:
     chmod +x kalisetup.sh
 
     ./kalisetup.sh
+    
+    OR
+    
+    sudo ./kalisetup.sh
+
+Tools are located in ~/tools
+
+Enter new alias to get to tools directory fast:
+
+    hunt
+
+Enter new alias to get to BugBounty directory fast:
+
+    bb

@@ -254,35 +254,18 @@ then
     
     printf '\n'
     echo -e "\e[1;32m[+]  -  Creating Custom Aliases...\e[0m"
+    
+    git clone https://github.com/VulnHound/bash_profile.git
+    cd bash_profile
+    cat bash_profile >> ~/.bash_profile
 
-    echo "# Custom Aliases\n" >> ~/.bashrc
-    echo "alias devpy="cd ~/Documents/Python && clear && pwd && ls -l"" >> ~/.bashrc
-    echo "alias devc="cd ~/Documents/CLang && clear && pwd && ls -l"" >> ~/.bashrc
-    echo "alias devgo="cd ~/Documents/GoLang && clear && pwd && ls -l"" >> ~/.bashrc
-    echo "alias devbash="cd ~/Documents/BASH && clear && pwd && ls -l"" >> ~/.bashrc
-    echo "alias hunt="cd ~/tools && clear && pwd && ls -l"" >> ~/.bashrc
-    echo "alias bb="cd ~/BugBounty && clear && pwd && ls -l"" >> ~/.bashrc
-    echo "alias cl="clear && pwd && ls -l"" >> ~/.bashrc
-    echo "\n" >> ~/.bashrc
-
-    # Create Shortcuts
-
-    printf '\n'
-    echo -e "\e[1;32m[+]  -  Creating Shortcuts...\e[0m"
-
-    echo "# Shortcuts\n" >> ~/.bashrc
-    echo "mass(){" >> ~/.bashrc
-    echo "    hunt" >> ~/.bashrc
-    echo "    cd massdns" >> ~/.bashrc
-    echo "    ./scripts/subbrute.py /Users/Dex/tools/wordlists/all.txt $1 | ./bin/massdns -r lists/resolvers.txt -t" >> ~/.bashrc
-    echo "    bb" >> ~/.bashrc
-    echo"}" >> ~/.bashrc
 else
     printf '\n'                                                                           
     echo -e "\e[1;31m[-]  -  BugBounty tools were not installed...\e[0m"                  
     printf '\n\n'
 fi
 
+source ~/.bash_profile
 source ~/.bashrc
 
 # Finish Execution Message

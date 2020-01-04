@@ -94,122 +94,123 @@ read BBHT
 
 if [ $BBHT = "y" ] || [ $BBHT = "Y" ];
 then
-    #Install Aquatone
-    echo -e "\e[1;32m[+]  -  Installing Aquatone\e[0m"
-    go get -v -u github.com/michenriksen/aquatone
-    echo "done"
+     #Install Aquatone
+     echo -e "\e[1;32m[+]  -  Installing Aquatone\e[0m"
+     go get -v -u github.com/michenriksen/aquatone
+     echo "done"
 
-    #Install Chromium
-    echo -e "\e[1;32m[+]  -  Installing Chromium\e[0m"
-    sudo snap install chromium
-    echo "done"
+     #Install Chromium
+     echo -e "\e[1;32m[+]  -  Installing Chromium\e[0m"
+     sudo snap install chromium
+     echo "done"
 
-    # Install JSParser
-    echo -e "\e[1;32m[+]  -  Installing JSParser\e[0m"
-    git clone https://github.com/nahamsec/JSParser.git
-    cd JSParser*
-    sudo python setup.py install
-    cd ~/tools/
-    echo "done"
+     # Install JSParser
+     echo -e "\e[1;32m[+]  -  Installing JSParser\e[0m"
+     git clone https://github.com/nahamsec/JSParser.git
+     cd JSParser*
+     sudo python setup.py install
+     cd ~/tools/
+     echo "done"
 
-    echo -e "\e[1;32m[+]  -  Installing Sublist3r\e[0m"
-    git clone https://github.com/aboul3la/Sublist3r.git
-    cd Sublist3r*
-    pip install -r requirements.txt
-    cd ~/tools/
-    echo "done"
+     echo -e "\e[1;32m[+]  -  Installing Sublist3r\e[0m"
+     git clone https://github.com/aboul3la/Sublist3r.git
+     cd Sublist3r*
+     pip install -r requirements.txt
+     cd ~/tools/
+     echo "done"
 
-    echo -e "\e[1;32m[+]  -  Installing teh_s3_bucketeers\e[0m"
-    git clone https://github.com/tomdev/teh_s3_bucketeers.git
-    cd ~/tools/
-    echo "done"
+     echo -e "\e[1;32m[+]  -  Installing teh_s3_bucketeers\e[0m"
+     git clone https://github.com/tomdev/teh_s3_bucketeers.git
+     cd ~/tools/
+     echo "done"
+    
 
+     echo -e "\e[1;32m[+]  -  Installing WPScan\e[0m"
+     git clone https://github.com/wpscanteam/wpscan.git
+     cd wpscan*
+     sudo gem install bundler && bundle install --without test
+     cd ~/tools/
+     echo "done"
 
-    echo -e "\e[1;32m[+]  -  Installing WPScan\e[0m"
-    git clone https://github.com/wpscanteam/wpscan.git
-    cd wpscan*
-    sudo gem install bundler && bundle install --without test
-    cd ~/tools/
-    echo "done"
-
-    echo -e "\e[1;32m[+]  -  Installing Dirsearch\e[0m"
-    git clone https://github.com/maurosoria/dirsearch.git
-    cd ~/tools/
-    echo "done"
-
-
-    echo -e "\e[1;32m[+]  -  Installing Lazys3\e[0m"
-    git clone https://github.com/nahamsec/lazys3.git
-    cd ~/tools/
-    echo "done"
-
-    echo -e "\e[1;32m[+]  -  Installing Virtual Host Discovery\e[0m"
-    git clone https://github.com/jobertabma/virtual-host-discovery.git
-    cd ~/tools/
-    echo "done"
+     echo -e "\e[1;32m[+]  -  Installing Dirsearch\e[0m"
+     git clone https://github.com/maurosoria/dirsearch.git
+     cd ~/tools/
+     echo "done"
 
 
-    echo -e "\e[1;32m[+]  -  Installing sqlmap\e[0m"
-    git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev
-    cd ~/tools/
-    echo "done"
+     echo -e "\e[1;32m[+]  -  Installing Lazys3\e[0m"
+     git clone https://github.com/nahamsec/lazys3.git
+     cd ~/tools/
+     echo "done"
 
-    echo -e "\e[1;32m[+]  -  Installing knock.py\e[0m"
-    git clone https://github.com/guelfoweb/knock.git
-    cd ~/tools/
-    echo "done"
+     echo -e "\e[1;32m[+]  -  Installing Virtual Host Discovery\e[0m"
+     git clone https://github.com/jobertabma/virtual-host-discovery.git
+     cd ~/tools/
+     echo "done"
 
-    echo -e "\e[1;32m[+]  -  Installing lazyrecon\e[0m"
-    git clone https://github.com/nahamsec/lazyrecon.git
-    cd ~/tools/
-    echo "done"
 
-    echo -e "\e[1;32m[+]  -  Installing nmap\e[0m"
-    sudo apt-get install -y nmap
-    echo "done"
+     echo -e "\e[1;32m[+]  -  Installing sqlmap\e[0m"
+     git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev
+     cd ~/tools/
+     echo "done"
 
-    echo -e "\e[1;32m[+]  -  Installing MassDNS\e[0m"
-    git clone https://github.com/blechschmidt/massdns.git
-    cd ~/tools/massdns
-    make
-    cd ~/tools/
-    echo "done"
+     echo -e "\e[1;32m[+]  -  Installing knock.py\e[0m"
+     git clone https://github.com/guelfoweb/knock.git
+     cd ~/tools/
+     echo "done"
 
-    echo -e "\e[1;32m[+]  -  Installing asnlookup\e[0m"
-    git clone https://github.com/yassineaboukir/asnlookup.git
-    cd ~/tools/asnlookup
-    pip install -r requirements.txt
-    cd ~/tools/
-    echo "done"
+     echo -e "\e[1;32m[+]  -  Installing lazyrecon\e[0m"
+     git clone https://github.com/nahamsec/lazyrecon.git
+     cd ~/tools/
+     echo "done"
 
-    echo -e "\e[1;32m[+]  -  Installing httprobe\e[0m"
-    go get -v -u github.com/tomnomnom/httprobe
-    echo "done"
+     echo -e "\e[1;32m[+]  -  Installing nmap\e[0m"
+     sudo apt-get install -y nmap
+     echo "done"
 
-    echo -e "\e[1;32m[+]  -  Installing unfurl\e[0m"
-    go get -v -u github.com/tomnomnom/unfurl
-    echo "done"
+     echo -e "\e[1;32m[+]  -  Installing MassDNS\e[0m"
+     git clone https://github.com/blechschmidt/massdns.git
+     cd ~/tools/massdns
+     make
+     cd ~/tools/
+     echo "done"
 
-    echo -e "\e[1;32m[+]  -  Installing waybackurls\e[0m"
-    go get -v -u github.com/tomnomnom/waybackurls
-    echo "done"
+     echo -e "\e[1;32m[+]  -  Installing asnlookup\e[0m"
+     git clone https://github.com/yassineaboukir/asnlookup.git
+     cd ~/tools/asnlookup
+     pip install -r requirements.txt
+     cd ~/tools/
+     echo "done"
 
-    echo -e "\e[1;32m[+]  -  Installing crtndstry\e[0m"
-    git clone https://github.com/nahamsec/crtndstry.git
-    echo "done"
+     echo -e "\e[1;32m[+]  -  Installing httprobe\e[0m"
+     go get -v -u github.com/tomnomnom/httprobe
+     echo "done"
 
-    echo -e "\e[1;32m[+]  -  Downloading Seclists...\e[0m"
-    cd ~/tools/
-    git clone https://github.com/danielmiessler/SecLists.git
-    cd ~/tools/SecLists/Discovery/DNS/
-    ##THIS FILE BREAKS MASSDNS AND NEEDS TO BE CLEANED
-    cat dns-Jhaddix.txt | head -n -14 > clean-jhaddix-dns.txt
-    cd ~/tools/
-    echo "done"
+     echo -e "\e[1;32m[+]  -  Installing unfurl\e[0m"
+     go get -v -u github.com/tomnomnom/unfurl
+     echo "done"
+
+     echo -e "\e[1;32m[+]  -  Installing waybackurls\e[0m"
+     go get -v -u github.com/tomnomnom/waybackurls
+     echo "done"
+
+     echo -e "\e[1;32m[+]  -  Installing crtndstry\e[0m"
+     git clone https://github.com/nahamsec/crtndstry.git
+     echo "done"
+
+     echo -e "\e[1;32m[+]  -  Downloading Seclists...\e[0m"
+     cd ~/tools/
+     git clone https://github.com/danielmiessler/SecLists.git
+     cd ~/tools/SecLists/Discovery/DNS/
+     ##THIS FILE BREAKS MASSDNS AND NEEDS TO BE CLEANED
+     cat dns-Jhaddix.txt | head -n -14 > clean-jhaddix-dns.txt
+     cd ~/tools/
+     echo "done"
 else
-    printf '\n'
-    echo -e "\e[1;31m[-]  -  Bug Bounty Hunting tools not installed...\e[0m"
-    printf '\n\n'
+     printf '\n'
+     echo -e "\e[1;31m[-]  -  Bug Bounty Hunting tools not installed...\e[0m"
+     printf '\n\n'
+fi
 
 # Install RED_HAWK
 

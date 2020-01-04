@@ -76,8 +76,6 @@ select choice in "${choices[@]}"; do
 					;;
 				no)
 					echo "Please install go and rerun this script"
-					echo "Aborting installation..."
-					exit 1
 					;;
 	esac	
 done

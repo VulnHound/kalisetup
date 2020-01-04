@@ -51,77 +51,165 @@ else
         printf '\n\n'
 fi
 
-# Install NahamSec BBHT & LazyRecon
+#Install GO
+if [[ -z "$GOPATH" ]];then
+echo -e "\e[1;32m[+]  -  It looks like go is not installed, would you like to install it now"
+PS3="Please select an option : "
+choices=("yes" "no")
+select choice in "${choices[@]}"; do
+        case $choice in
+                yes)
 
-echo -e "\e[1;37m[+]  -  Would you like to install BBHT and LazyRecon? [Y/n] : \e[0m"
-read LAZY
-
-if [ $LAZY = "y" ] || [ $LAZY = 'Y' ];
-then
-        printf '\n'
-        echo -e "\e[1;32m[+]  -  Installing BBHT & LazyRecon by NahamSec...\e[0m"
-        printf '\n'
-
-        git clone https://github.com/nahamsec/bbht.git
-        cd bbht
-        chmod +x install.sh
-        ./install.sh
-
-        printf '\n'
-        echo -e "\e[1;32m[+]  -  Successfully installed LazyRecon and BBHT\e[0m"
-        printf '\n\n'
-else
-        printf '\n'
-        echo -e "\e[1;31m[-]  -  LazyRecon was not installed...\e[0m"
-        printf '\n\n'
+					echo -e "\e[1;32m[+]  -  Installing Golang\e[0m"
+					wget https://dl.google.com/go/go1.13.4.linux-amd64.tar.gz
+					sudo tar -xvf go1.13.4.linux-amd64.tar.gz
+					sudo mv go /usr/local
+					export GOROOT=/usr/local/go
+					export GOPATH=$HOME/go
+					export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+					echo 'export GOROOT=/usr/local/go' >> ~/.bash_profile
+					echo 'export GOPATH=$HOME/go'	>> ~/.bash_profile			
+					echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' >> ~/.bash_profile	
+					source ~/.bash_profile
+					sleep 1
+					break
+					;;
+				no)
+					echo "Please install go and rerun this script"
+					echo "Aborting installation..."
+					exit 1
+					;;
+	esac	
+done
 fi
 
-# Install MassDNS
+# Make tools directory
+mkdir ~/tools
+cd ~/tools/
 
-echo -e "\e[1;37m[+]  -  Would you like to install Massdns? [Y/n] : \e[0m"
-read MASS
+# Install bbht tools
 
-if [ $MASS = "y" ] || [ $MASS = "Y" ];
+echo -e "\e[1;32m[+]  -  Would you like to install Bug Bounty Hunting tools? [Y/n] : \e[0m"
+read BBHT
+
+if [ $BBHT = "y" ] || [ $BBHT = "Y" ];
 then
-        printf '\n'
-        echo -e "\e[1;32m[+]  -  Installing Massdns...\e[0m"
-        printf '\n'
+    #Install Aquatone
+    echo -e "\e[1;32m[+]  -  Installing Aquatone\e[0m"
+    go get -v -u github.com/michenriksen/aquatone
+    echo "done"
 
-        cd /root
-        git clone https://github.com/blechschmidt/massdns.git
+    #Install Chromium
+    echo -e "\e[1;32m[+]  -  Installing Chromium\e[0m"
+    sudo snap install chromium
+    echo "done"
 
-        printf '\n'
-        echo -e "\e[1;32m[+]  -  Successfully Installed Massdns\e[0m"
-        printf '\n\n'
+    # Install JSParser
+    echo -e "\e[1;32m[+]  -  Installing JSParser\e[0m"
+    git clone https://github.com/nahamsec/JSParser.git
+    cd JSParser*
+    sudo python setup.py install
+    cd ~/tools/
+    echo "done"
+
+    echo -e "\e[1;32m[+]  -  Installing Sublist3r\e[0m"
+    git clone https://github.com/aboul3la/Sublist3r.git
+    cd Sublist3r*
+    pip install -r requirements.txt
+    cd ~/tools/
+    echo "done"
+
+    echo -e "\e[1;32m[+]  -  Installing teh_s3_bucketeers\e[0m"
+    git clone https://github.com/tomdev/teh_s3_bucketeers.git
+    cd ~/tools/
+    echo "done"
+
+
+    echo -e "\e[1;32m[+]  -  Installing WPScan\e[0m"
+    git clone https://github.com/wpscanteam/wpscan.git
+    cd wpscan*
+    sudo gem install bundler && bundle install --without test
+    cd ~/tools/
+    echo "done"
+
+    echo -e "\e[1;32m[+]  -  Installing Dirsearch\e[0m"
+    git clone https://github.com/maurosoria/dirsearch.git
+    cd ~/tools/
+    echo "done"
+
+
+    echo -e "\e[1;32m[+]  -  Installing Lazys3\e[0m"
+    git clone https://github.com/nahamsec/lazys3.git
+    cd ~/tools/
+    echo "done"
+
+    echo -e "\e[1;32m[+]  -  Installing Virtual Host Discovery\e[0m"
+    git clone https://github.com/jobertabma/virtual-host-discovery.git
+    cd ~/tools/
+    echo "done"
+
+
+    echo -e "\e[1;32m[+]  -  Installing sqlmap\e[0m"
+    git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev
+    cd ~/tools/
+    echo "done"
+
+    echo -e "\e[1;32m[+]  -  Installing knock.py\e[0m"
+    git clone https://github.com/guelfoweb/knock.git
+    cd ~/tools/
+    echo "done"
+
+    echo -e "\e[1;32m[+]  -  Installing lazyrecon\e[0m"
+    git clone https://github.com/nahamsec/lazyrecon.git
+    cd ~/tools/
+    echo "done"
+
+    echo -e "\e[1;32m[+]  -  Installing nmap\e[0m"
+    sudo apt-get install -y nmap
+    echo "done"
+
+    echo -e "\e[1;32m[+]  -  Installing MassDNS\e[0m"
+    git clone https://github.com/blechschmidt/massdns.git
+    cd ~/tools/massdns
+    make
+    cd ~/tools/
+    echo "done"
+
+    echo -e "\e[1;32m[+]  -  Installing asnlookup\e[0m"
+    git clone https://github.com/yassineaboukir/asnlookup.git
+    cd ~/tools/asnlookup
+    pip install -r requirements.txt
+    cd ~/tools/
+    echo "done"
+
+    echo -e "\e[1;32m[+]  -  Installing httprobe\e[0m"
+    go get -v -u github.com/tomnomnom/httprobe
+    echo "done"
+
+    echo -e "\e[1;32m[+]  -  Installing unfurl\e[0m"
+    go get -v -u github.com/tomnomnom/unfurl
+    echo "done"
+
+    echo -e "\e[1;32m[+]  -  Installing waybackurls\e[0m"
+    go get -v -u github.com/tomnomnom/waybackurls
+    echo "done"
+
+    echo -e "\e[1;32m[+]  -  Installing crtndstry\e[0m"
+    git clone https://github.com/nahamsec/crtndstry.git
+    echo "done"
+
+    echo -e "\e[1;32m[+]  -  Downloading Seclists...\e[0m"
+    cd ~/tools/
+    git clone https://github.com/danielmiessler/SecLists.git
+    cd ~/tools/SecLists/Discovery/DNS/
+    ##THIS FILE BREAKS MASSDNS AND NEEDS TO BE CLEANED
+    cat dns-Jhaddix.txt | head -n -14 > clean-jhaddix-dns.txt
+    cd ~/tools/
+    echo "done"
 else
-        printf '\n'
-        echo -e "\e[1;31m[-]  -  Massdns was not installed...\e[0m"
-        printf '\n\n'
-fi
-
-# Install Asnlookup
-
-echo -e "\e[1;37m[+]  -  Would you like to install Asnlookup? [Y/n] : \e[0m"
-read ASN
-
-if [ $ASN = "y" ] || [ $ASN = "Y" ];
-then
-        printf '\n'
-        echo -e "\e[1;32m[+]  -  Installing Asnlookup...\e[0m"
-        printf '\n'
-
-        cd ~/tools/
-        git clone https://github.com/yassineaboukir/Asnlookup.git && cd Asnlookup
-        pip3 install -r requirements.txt
-
-        printf '\n'
-        echo -e "\e[1;32m[+]  -  Successfully Installed Asnlookup\e[0m"
-        printf '\n\n'
-else
-        printf '\n'
-        echo -e "\e[1;31m[-]  -  Asnlookup was not installed...\e[0m"
-        printf '\n\n'
-fi
+    printf '\n'
+    echo -e "\e[1;31m[-]  -  Bug Bounty Hunting tools not installed...\e[0m"
+    printf '\n\n'
 
 # Install RED_HAWK
 
@@ -203,7 +291,7 @@ fi
 
 # Install vulnhound specific tools
 
-echo -e "\e[1;37m[~]  -  Would you like to install BugBounty tools? [Y/n] : \e[0m"
+echo -e "\e[1;37m[~]  -  Would you like to install VulnHound specific tools? [Y/n] : \e[0m"
 read BB
 
 if [ $BB = "y" ] || [ $BB = "Y" ];
@@ -249,6 +337,7 @@ then
     mkdir GoLang
     cd
     mkdir BugBounty
+    wait 3
 
     # Create Aliases
     
@@ -258,10 +347,11 @@ then
     git clone https://github.com/VulnHound/bash_profile.git
     cd bash_profile
     cat bash_profile >> ~/.bash_profile
+    wait 3
 
 else
     printf '\n'                                                                           
-    echo -e "\e[1;31m[-]  -  BugBounty tools were not installed...\e[0m"                  
+    echo -e "\e[1;31m[-]  -  VulnHound specific tools were not installed...\e[0m"                  
     printf '\n\n'
 fi
 

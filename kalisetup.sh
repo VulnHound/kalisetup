@@ -321,7 +321,28 @@ then
     git clone https://github.com/GerbenJavado/LinkFinder.git
     cd LinkFinder
     sudo python setup.py install
-
+    
+    printf '\n'
+    echo -e "\e[1;32m[+]  -  Installing Naabu...\e[0m"
+    cd ~/tools
+    go get -v github.com/projectdiscovery/naabu/cmd/naabu
+    echo -e "\e[1;31m[-]  -  If fail, visit github.com/projectdiscovery/naabu\e[0m"
+    
+    printf '\n'
+    echo -e "\e[1;32m[+]  -  Installing Hakrawler...\e[0m"
+    cd ~/tools
+    go get github.com/hakluke/hakrawler
+    
+    printf '\n'
+    echo -e "\e[1;32m[+]  -  Installing Hakrevdns...\e[0m"
+    cd ~/tools
+    go get github.com/hakluke/hakrevdns
+    
+    printf '\n'
+    echo -e "\e[1;32m[+]  -  Installing Hakcheckurl...\e[0m"
+    cd ~/tools
+    go get github.com/hakluke/hakcheckurl
+    
     # Make Proper directories
     
     printf '\n'
@@ -342,7 +363,7 @@ then
     
     printf '\n'
     echo -e "\e[1;32m[+]  -  Creating Custom Aliases...\e[0m"
-    
+    cd ~/Documents/BASH
     git clone https://github.com/VulnHound/bash_profile.git
     cd bash_profile
     cat bash_profile >> ~/.bash_profile

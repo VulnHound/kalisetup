@@ -22,6 +22,10 @@ Tools included:
 - LinkFinder
 - Amass
 - XSStrike
+- Naabu
+- Hakrawler
+- Hakrevdns
+- Hakcheckurl
 
 Installation and USAGE:
                       
